@@ -1,0 +1,78 @@
+https://courses.edx.org/courses/course-v1:LinuxFoundationX+LFS101x+1T2017/course/
+
+Chapter 01: The Linux Foundation
+
+* https://www.linuxfoundation.org
+
+* Distro Families
+** Debian Family Systems - Individual Distros (such as Ubuntu > Linux)
+** SUSE Family Systems - Individual Distros (such as SLES >  openSUSE)
+** Fedora Family Systems - Individual Distros (such as RHEL > CentOS, Oracle Linux)
+
+Chapter 02: Linux Philosophy and Concepts  
+
+* Linus Torvalds
+* Linux borrows heavily from the UNIX operating system because it was written to be a free and open source version of UNIX. 
+Files are stored in a hierarchical filesystem with the top node of the system being root directory or simple "/".
+
+* askubuntu.com
+
+* Kernel
+** glue between hardware and applications
+** considered the brain of the Linux Operating System
+** controls the hardware and makes the hardware interact with the applications
+** Linux kernel
+** kernel.org
+
+* Distribution
+** collection of software making up a Linux-based OS
+** Distros
+** collections of programs combined with Linux kernel to make up a Linux-based operating system
+** Red Hat Enterprise Linux, Fedora, Ubuntu, Gentoo
+
+* Bootloader
+** program that boots the operating system
+** GRUB, ISOLINUX
+
+* Service
+** program that runs as background process
+** httpd (webserver), ftpd (ftp server), named (name server), dhcpd (dhcp server)
+
+* Filesystem
+** method for storing and organizing files in Linux
+** ext3, ext4, FAT, XFS and Btrfs
+
+* Window System
+** provides the standard toolkit and protocol to build graphical user interfaces on nearly all Linux systems
+** GUI - Desktop Environment - graphical user interface on top of the operating system
+*** KDE, GNOME, XFCE
+** Console - Command Line - interface for typing commands on top of the operating system
+*** CLI/Shell
+
+* Shell
+** command line interpreter that interprets the command line input and instructs the operating system to perform any necessary tasks and commands.
+
+* Linux Support Services
+** Commercial Support and Services - Oracle, RHEL, SLES, Ubuntu Commercial Support
+** Community Support and Services - CentOS, OpenSUSE, Ubuntu Community  Support
+
+Chapter 03 Linux Basics and System Startup
+
+The Boot Process - procedure for initializing system
+>> Power  On 
+>> BIOS - The First Step 
+*** Basic Input/Output System initializes the hardware, including the screen and the keyboard, and tests the memory. 
+*** This process is also called POST (Power On Self Test)
+>> MBR - Master Boot Record
+*** Once the POST is completed, the system control passes from the BIOS to the bootloader.
+*** Bootloader is usually stored on one of the hard disks in the systems, either in the boot sector (for traditional BIOS/MBR systems) or the EFI partition (for more recent (Unified) Extensible Firmware Interface or EFI/UEFI systems)
+*** Up to this stage, the machine does not access any mass storage media. Therefore, information on the date, time and the most important peripherals are loaded from the CMOS values
+*** Bootloaders include:
+**** GRUB Grand  Unified Boot Loader
+**** ISOLINUX booting from removable media 
+**** DAS U-BOOT booting on embedded devices/appliances
+*** When booting Linux, the bootloader is responsible for loading the kernel image and the initial RAM disk or filesystem (which contains some critical files and device drivers needed to start the system) into memory
+
+
+
+
