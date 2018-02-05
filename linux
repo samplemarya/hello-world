@@ -72,7 +72,7 @@ The Boot Process - procedure for initializing system
 **** ISOLINUX booting from removable media 
 **** DAS U-BOOT booting on embedded devices/appliances
 *** When booting Linux, the bootloader is responsible for loading the kernel image and the initial RAM disk or filesystem (which contains some critical files and device drivers needed to start the system) into memory
-
-
-
-
+>> Bootloader in Action
+*** Bootloader > Kernel Linux , > Initial RAM Disk (initramfs image)
+** First Stage
+*** BIOS/MBR method, bootloader resides at the first sector of the hard disk
