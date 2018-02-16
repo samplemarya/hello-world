@@ -1,0 +1,9 @@
+* lsb_release - print distribution-specific information
+>lsb_release -a
+ 
+* curl - transfer a URL
+
+* install from a deb
+* sudo dpkg -i foo.deb > install package
+* sudo dpkg -r packagename > remove package
+* sudo dpkg-reconfigure packagename > reconfigure package
