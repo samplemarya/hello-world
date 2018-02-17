@@ -141,3 +141,104 @@ https://www.digitalocean.com/community/tutorials/package-management-basics-apt-y
 > docker container run -d --net dude --net-alias search elasticsearch:2
 > docker container run -d --net dude --net-alias search elasticsearch:2
 > docker container run --rm --net dude alpine nslookup search
+
+
+
+SECTION 3
+
+Docker Hub: hub.docker.com
+Docker official images: https://github.com/docker-library/official-images/tree/master/library
+
+> docker image ls OR docker images
+> docker image history nginx (show layers of changes made in image)
+> docker image inspect nginx (returns JSON metadata about the image)
+
+> docker image tag (assign one or more tags to an image)
+> docker image tag nginx sm/nginx
+** image name = user>/<repo>:<tag>
+
+> docker image push (uploads changed layers to an image registry (default is Hub)
+> docker login <server> (defaults to loggin in Hub, but you can override by adding server url)
+> cat .docker/config.json
+> docker logout
+
+> docker tag hello-world samplemarya/hello-world
+> docker push samplemarya/hello-world
+
+https://docs.docker.com/engine/reference/builder/
+
+> docker build -f some-dockerfile
+** docker build > Build an image from a Dockerfile
+
+** package manager > PM's like apt and yum are one of the reasons to build containers FROM Debian, Ubuntu, Fedora or CentOS
+
+> docker image build -t customnginx .
+
+# - you should use the 'node' official image, with the alpine 6.x branch
+FROM node:6-alpine
+# - this app listens on port 3000, but the container should launch on port 80
+  #  so it will respond to http://localhost:80 on your computer
+EXPOSE 3000
+# - then it should use alpine package manager to install tini: 'apk add --update tini'
+RUN apk add --update tini
+# - then it should create directory /usr/src/app for app files with 'mkdir -p /usr/src/app'
+RUN mkdir -p /usr/src/app
+# - Node uses a "package manager", so it needs to copy in package.json file
+WORKDIR /usr/src/app
+COPY package.json package.json
+# - then it needs to run 'npm install' to install dependencies from that file
+RUN npm install && npm cache clean --force
+# - to keep it clean and small, run 'npm cache clean --force' after above
+# - then it needs to copy in all files from current directory
+COPY . .
+# - then it needs to start container with command 'tini -- node ./bin/www'
+CMD [ "tini", "node", "--", "./bin/www" ]
+# - in the end you should be using FROM, RUN, WORKDIR, COPY, EXPOSE, and CMD commands
+
+
+
+SECTION 4
+
+> docker volume prune (Remove all unused volumes)
+> docker container run -it --rm -e MYSQL_ALLOW_EMPTY_PASSWORD=true -v mysql-db:/var/lib/mysql mysql
+
+> docker volume create <volume> (required to do this before "docker run" to use custom drivers and labels)
+
+> docker container run -d --name nginx -p 80:80 -v $(pwd):/usr/share/nginx/html nginx
+> docker exec -it nginx bash
+
+> docker container run -d --name psql -v psql:/var/lib/postgresql/data postgres:9.6-alpine
+> docker container run -d --name psql2 -v psql:/var/lib/postgresql/data postgres:9.5-alpine
+
+
+
+SECTION 5
+
+> docker-compose up
+> docker-compose down
+
+****
+version: '2'
+
+services:
+  drupal:
+    image: drupal
+    ports:
+      - "8080:80"
+    volumes:
+      - drupal-modules:/var/www/html/modules
+      - drupal-profiles:/var/www/html/profiles
+      - drupal-sites:/var/www/html/sites
+      - drupal-themes:/var/www/html/themes
+  postgres:
+    image: postgres
+    environment:
+      - POSTGRES_PASSWORD=mypasswd
+
+volumes:
+  drupal-modules:
+  drupal-profiles:
+  drupal-sites:
+  drupal-themes:
+****
+
