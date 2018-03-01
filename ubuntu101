@@ -9,9 +9,17 @@
 * sudo dpkg-reconfigure packagename > reconfigure package
 
 ~~~~~
-How to Install Oracle Java 8 on Ubuntu 14.04 LTS
-Step #1: Add the WebUpd8 Team Personal Package Archive (PPA): sudo apt-add-repository ppa:webupd8team/java
-Step #2: sudo apt-get update
-Step #3: sudo apt-get install oracle-java8-installer
-Step #4: java -version
+HOW TO INSTALL ORACLE JAVA 8 ON UBUNTU 14.04 LTS
+** Add the WebUpd8 Team Personal Package Archive (PPA): 
+* sudo apt-add-repository ppa:webupd8team/java
+* sudo apt-get update
+* sudo apt-get install oracle-java8-installer
+* java -version
+* sudo apt-get install oracle-java8-set-default
+* sudo -i
+* cat >> /etc/environment <<EOL
+> JAVA_HOME=/usr/lib/jvm/java-8-oracle
+> JRE_HOME=/usr/lib/jvm/java-8-oracle/jre
+> EOL
+* exit
 ~~~~~
