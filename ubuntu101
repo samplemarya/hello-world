@@ -23,3 +23,9 @@ HOW TO INSTALL ORACLE JAVA 8 ON UBUNTU 14.04 LTS
 > EOL
 * exit
 ~~~~~
+HOW TO INSTALL MAVEN ON UBUNTU
+* apt-cache search maven
+* sudo apt-get install maven
+* mvn -version
+* Location: /usr/share/maven /etc/maven
+~~~~~
